@@ -41,6 +41,7 @@ if __name__ == '__main__':
         args.model_names,
         alpha=args.alpha,
     )
-    for k, v in sorted(mutations_models.items(), key=lambda item: -item[1]):
+    for k, v in sorted(mutations_models[0].items(), key=lambda item: -item[1]):
         mut_str = f'{k[1]}{k[0] + 1}{k[2]}'
-        print(f'{mut_str}\t{v}')
+        model_names = ', '.join(mutations_models[1].get(k, []))  # Get model names and join them as a string
+        print(f'{mut_str}\t{v}\t{model_names}')
